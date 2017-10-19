@@ -125,7 +125,7 @@ function displayResults() {
         if (userAnswer === currentQuestion.correctAnswer) {
             correctAnswers++;
             // color the answers green
-            answerBoxes[questionNumber].style.color = "green";
+            answerBoxes[questionNumber].style.color = "green"; // GO BACK AND CHANGE THIS SYNTAX 
         }
         // if answer is wrong or blank
         else {
@@ -143,18 +143,19 @@ function displayResults() {
 
     //show number of correct answers
     //**********Add some Star Trek Text */
-    resultsBox.innerHTML = `${correctAnswers} out of ${quizQuestions.length}`;
+    resultsBox.innerHTML = `Your score is: ${correctAnswers} out of ${quizQuestions.length}`;
 
 };
 
 // quiz timer
-setTimeout(timeUp, 1000 * 120);
+setTimeout(timeUp, 1000 * 5);
 
 function timeUp() {
 
     $("#time-left").html("<h1>Time's Up!</h1>");
     console.log("done");
     displayResults();
+
 
 };
 
