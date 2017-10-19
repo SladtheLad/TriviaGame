@@ -1,6 +1,6 @@
 //You'll create a trivia game that shows only one question until the player answers it or their time runs out.
 
-//If the player selects the correct answer, show a screen congratulating them for choosing the right option.After a few seconds, 
+//If the player selects the correct answer, show a screen congratulating them for choosing the right option. After a few seconds, 
 //display the next question -- do this without user input.
 
 //The scenario is similar for wrong answers and time- outs.
@@ -24,8 +24,6 @@ var quizQuestions = [
             d: "Exploration and scientific study"
         }
     },
-
-
     {
         question: "USS ENTERPRISE (NCC-1701-D) BARTENDER GUINAN (PLAYED BY WHOOPI GOLDBERG, WHO REQUESTED A PART ON THE SERIES) IS A MEMBER OF WHAT LONG-LIVED SPECIES?",
         answers: {
@@ -35,7 +33,6 @@ var quizQuestions = [
             d: "Human/Terran"
         }
     },
-
     {
         question: "WHAT IS THE NAME OF THE KLINGON HOME WORLD?",
         answers: {
@@ -45,8 +42,6 @@ var quizQuestions = [
             d: "Gorkon"
         }
     },
-
-
     {
         question: "HIKARU SULU HELD WHICH POSITION FOR THE LONGEST PERIOD OF TIME ABOARD THE USS ENTERPRISE (NCC-1701-A)?",
         answers: {
@@ -56,8 +51,6 @@ var quizQuestions = [
             d: "Communications Officer"
         }
     },
-
-
     {
         question: "WHAT IS THE PURPOSE OF THE VULCAN RITUAL OF KOLINAHR?",
         answers: {
@@ -67,11 +60,43 @@ var quizQuestions = [
             d: "The transfer of one’s consciousness into the body of another"
         }
     }
-
 ];
 
 
+//function for displaying the quiz
+function quizShow(){
+     var htmlOutput = [];
+
+    quizQuestions.forEach((currentQuestion, questionNumber) => {
+
+       var answers = [];
+
+       for(letter in currentQuestion.answers) {
+
+        answers.push(
+            `<label>
+                <input type="radio" name="question${questionNumber}" value = "${letter}">
+                ${letter} :
+                ${currentQuestion.answers[letter]}
+            </label>`
+
+        );
+       }
+
+       htmlOutput.push(
+           `<div class="question"> ${currentQuestion.question} </div>
+           <div class="answers">   
+           `
+       )
 
 
+    })
 
 
+}
+
+//function for displaying the quiz on interval
+
+//function for taking the users submition
+
+//function for showing the result
