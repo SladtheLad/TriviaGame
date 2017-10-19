@@ -13,6 +13,11 @@
 //On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
 
+//Setting some global constants
+const quizBox = $("#quiz");
+const resultsBox = $("#results");
+const submitButton = $("#submit");
+
 //My array of objects containing my question and answer pairs
 var quizQuestions = [
     {
@@ -22,7 +27,8 @@ var quizQuestions = [
             b: "Non-intervention",
             c: "Providing assistance to those in need",
             d: "Exploration and scientific study"
-        }
+        },
+        correctAnswer: "b"
     },
     {
         question: "USS ENTERPRISE (NCC-1701-D) BARTENDER GUINAN (PLAYED BY WHOOPI GOLDBERG, WHO REQUESTED A PART ON THE SERIES) IS A MEMBER OF WHAT LONG-LIVED SPECIES?",
@@ -31,7 +37,8 @@ var quizQuestions = [
             b: "Denobulan",
             c: "El- Aurian",
             d: "Human/Terran"
-        }
+        },
+        correctAnswer: "c"
     },
     {
         question: "WHAT IS THE NAME OF THE KLINGON HOME WORLD?",
@@ -40,7 +47,8 @@ var quizQuestions = [
             b: "Klingonia",
             c: "Anacreon",
             d: "Gorkon"
-        }
+        },
+        correctAnswer: "a"
     },
     {
         question: "HIKARU SULU HELD WHICH POSITION FOR THE LONGEST PERIOD OF TIME ABOARD THE USS ENTERPRISE (NCC-1701-A)?",
@@ -49,7 +57,8 @@ var quizQuestions = [
             b: "Chief Engineer",
             c: "Science Officer",
             d: "Communications Officer"
-        }
+        },
+        correctAnswer: "a"
     },
     {
         question: "WHAT IS THE PURPOSE OF THE VULCAN RITUAL OF KOLINAHR?",
@@ -58,18 +67,19 @@ var quizQuestions = [
             b: "The temporary union of two minds",
             c: "Sexual release and mating",
             d: "The transfer of one’s consciousness into the body of another"
-        }
+        },
+        correctAnswer: "a"
     }
 ];
 
 
 //function for displaying the quiz
 function quizShow(){
-     var htmlOutput = [];
+     const htmlOutput = [];
 
     quizQuestions.forEach((currentQuestion, questionNumber) => {
 
-       var answers = [];
+       const answers = [];
 
        for(letter in currentQuestion.answers) {
 
@@ -85,14 +95,13 @@ function quizShow(){
 
        htmlOutput.push(
            `<div class="question"> ${currentQuestion.question} </div>
-           <div class="answers">   
-           `
-       )
+           <div class="answers"> ${answers.join('')} </div>`
+       );
 
 
-    })
+    });
 
-
+    quizBox.innerHTML = output.join('');
 }
 
 //function for displaying the quiz on interval
@@ -100,3 +109,24 @@ function quizShow(){
 //function for taking the users submition
 
 //function for showing the result
+function displayResults() {
+
+    const answerBoxes = $(".answers");
+
+    var correctAnswers = 0;
+
+    quizQuestions.forEach( (currentQuestion, questionNumber) => {
+
+        const answerBox = answerBoxes[questionNumber];
+        const selector = "input[name=question"+questionNumber+"]:checked";
+        const userAnswer = ($("selector") || {}).value;
+
+        //if correct answer
+        if(userAnswer===currentQuestion.correctAnswer)
+
+    })
+
+
+
+
+}
