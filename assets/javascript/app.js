@@ -122,9 +122,18 @@ function displayResults() {
         const userAnswer = ($("selector") || {}).value;
 
         //if correct answer
-        if(userAnswer===currentQuestion.correctAnswer)
+        if(userAnswer===currentQuestion.correctAnswer) {
+            correctAnswers++;
 
-    })
+            //add audio for correct answer
+        } else {
+
+        }
+
+    });
+
+    //show number of correct answers
+    resultsBox.innerHTML = `${correctAnswers} out of ${quizQuestions.length}`;
 
 
 
