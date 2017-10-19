@@ -19,6 +19,7 @@ const resultsBox = $("#results")[0];
 const submitButton = $("#submit")[0];
 
 
+
 //My array of objects containing my question and answer pairs
 var quizQuestions = [
     {
@@ -75,28 +76,30 @@ var quizQuestions = [
 
 
 //function for displaying the quiz
-function quizShow(){
-     const htmlOutput = [];
+function quizShow() {
+    const htmlOutput = [];
 
     quizQuestions.forEach((currentQuestion, questionNumber) => {
 
-       const answers = [];
+        const answers = [];
 
-       for(letter in currentQuestion.answers) {
+        for (letter in currentQuestion.answers) {
 
-        answers.push(
-            `<label>
+            answers.push(
+                `<label>
                 <input type="radio" name="question${questionNumber}" value = "${letter}">
                 ${letter} : ${currentQuestion.answers[letter]}
             </label>`
 
-        );
-       }
+            );
+        }
 
-       htmlOutput.push(
-           `<div class="question"> ${currentQuestion.question} </div>
-           <div class="answers"> ${answers.join('')} </div>`
-       );
+        htmlOutput.push(
+            `<div class="quiz-slide">
+                <div class="question"> ${currentQuestion.question} </div>
+                <div class="answers"> ${answers.join(' ')} </div>
+            </div>`
+        );
 
 
     });
@@ -104,41 +107,54 @@ function quizShow(){
     quizBox.innerHTML = htmlOutput.join('');
 };
 
-//function timers
-
-//function for pagination
-
 
 //function for showing the result
 function displayResults() {
 
-    const answerBoxes = $(".answers")[0];
+    const answerBoxes = $(".answers");
 
     var correctAnswers = 0;
 
-    quizQuestions.forEach( (currentQuestion, questionNumber) => {
+    quizQuestions.forEach((currentQuestion, questionNumber) => {
 
         const answerBox = answerBoxes[questionNumber];
-        const selector = "input[name=question"+questionNumber+"]:checked";
-        const userAnswer = ($("selector") || {}).value;
+        const selector = "input[name=question" + questionNumber + "]:checked";
+        const userAnswer = (answerBox.querySelector(selector) || {}).value;
 
         //if correct answer
-        if(userAnswer===currentQuestion.correctAnswer) {
+        if (userAnswer === currentQuestion.correctAnswer) {
             correctAnswers++;
-
-            //add audio for correct answer
-        } else {
-
+            // color the answers green
+            answerBoxes[questionNumber].style.color = "green";
         }
+        // if answer is wrong or blank
+        else {
+            // color the answers red
+            answerBoxes[questionNumber].style.color = "red";
+        }
+            //*************** maybe add audio for correct answer
+        
+
+        
+
 
     });
+
 
     //show number of correct answers
     //**********Add some Star Trek Text */
     resultsBox.innerHTML = `${correctAnswers} out of ${quizQuestions.length}`;
 
+};
 
+// quiz timer
+setTimeout(timeUp, 1000 * 120);
 
+function timeUp() {
+
+    $("#time-left").html("<h1>Time's Up!</h1>");
+    console.log("done");
+    displayResults();
 
 };
 
@@ -146,4 +162,4 @@ function displayResults() {
 quizShow();
 
 // on submit, show results
-submitButton.onclick = displayResults;
+$(submitButton).on("click", displayResults);

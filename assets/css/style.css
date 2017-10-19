@@ -1,0 +1,18 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-size: 30px;
+    color: #034264;
+    font-weight: 700;
+    text-align: center;
+
+}
+
+#bg { 
+    background-image: url("../images/Discovery2.png");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
