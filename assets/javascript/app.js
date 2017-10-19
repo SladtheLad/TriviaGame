@@ -14,9 +14,9 @@
 
 
 //Setting some global constants
-const quizBox = document.getElementById("quiz");
-const resultsBox = document.getElementById("results");
-const submitButton = document.getElementById("submit");
+const quizBox = $("#quiz")[0];
+const resultsBox = $("#results")[0];
+const submitButton = $("#submit")[0];
 
 
 //My array of objects containing my question and answer pairs
@@ -112,7 +112,7 @@ function quizShow(){
 //function for showing the result
 function displayResults() {
 
-    const answerBoxes = quizBox.querySelectorAll(".answers");
+    const answerBoxes = $(".answers")[0];
 
     var correctAnswers = 0;
 
@@ -120,7 +120,7 @@ function displayResults() {
 
         const answerBox = answerBoxes[questionNumber];
         const selector = "input[name=question"+questionNumber+"]:checked";
-        const userAnswer = (answerBox.querySelector(selector) || {}).value;
+        const userAnswer = ($("selector") || {}).value;
 
         //if correct answer
         if(userAnswer===currentQuestion.correctAnswer) {
@@ -146,4 +146,4 @@ function displayResults() {
 quizShow();
 
 // on submit, show results
-submitButton.addEventListener("click", displayResults);
+submitButton.onclick = displayResults;
