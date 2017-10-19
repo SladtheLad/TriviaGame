@@ -14,9 +14,10 @@
 
 
 //Setting some global constants
-const quizBox = $("#quiz");
-const resultsBox = $("#results");
-const submitButton = $("#submit");
+const quizBox = document.getElementById("quiz");
+const resultsBox = document.getElementById("results");
+const submitButton = document.getElementById("submit");
+
 
 //My array of objects containing my question and answer pairs
 var quizQuestions = [
@@ -86,8 +87,7 @@ function quizShow(){
         answers.push(
             `<label>
                 <input type="radio" name="question${questionNumber}" value = "${letter}">
-                ${letter} :
-                ${currentQuestion.answers[letter]}
+                ${letter} : ${currentQuestion.answers[letter]}
             </label>`
 
         );
@@ -101,17 +101,16 @@ function quizShow(){
 
     });
 
-    quizBox.innerHTML = output.join('');
-}
+    quizBox.innerHTML = htmlOutput.join('');
+};
 
 //function for displaying the quiz on interval
 
-//function for taking the users submition
 
 //function for showing the result
 function displayResults() {
 
-    const answerBoxes = $(".answers");
+    const answerBoxes = quizBox.querySelectorAll(".answers");
 
     var correctAnswers = 0;
 
@@ -119,7 +118,7 @@ function displayResults() {
 
         const answerBox = answerBoxes[questionNumber];
         const selector = "input[name=question"+questionNumber+"]:checked";
-        const userAnswer = ($("selector") || {}).value;
+        const userAnswer = (answerBox.querySelector(selector) || {}).value;
 
         //if correct answer
         if(userAnswer===currentQuestion.correctAnswer) {
@@ -133,9 +132,16 @@ function displayResults() {
     });
 
     //show number of correct answers
+    //**********Add some Star Trek Text */
     resultsBox.innerHTML = `${correctAnswers} out of ${quizQuestions.length}`;
 
 
 
 
-}
+};
+
+// display quiz right away
+quizShow();
+
+// on submit, show results
+submitButton.addEventListener("click", displayResults);
