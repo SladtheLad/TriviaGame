@@ -104,7 +104,9 @@ function quizShow(){
     quizBox.innerHTML = htmlOutput.join('');
 };
 
-//function for displaying the quiz on interval
+//function timers
+
+//function for pagination
 
 
 //function for showing the result
