@@ -2,10 +2,17 @@ body, html {
     height: 100%;
     margin: 0;
     font-size: 30px;
-    color: #034264;
+    font-family: 'Federo', sans-serif;
+    color: #522903;
     font-weight: 700;
     text-align: center;
+}
 
+header {
+    margin-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgba(0, 0, 0, .3);
 }
 
 #bg { 
@@ -15,4 +22,36 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+
+.btn {
+    border: 5px solid transparent;
+    font-size: 40px;
+    padding: 12px 20px;
+    background-color: black;
+    color: yellow;
+    border-radius: 15px;
+}
+
+.btn-success {
+    border-color: #8a6d3b;
+}
+
+.btn:hover {
+    background-color: orange;
+    color: black; 
+    border-color: #8a6d3b;
+}
+
+.quiz-slide {
+    padding-top: 20px;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+img {
+    margin-left: 20px;
+    margin-right: 20px;
+    max-width: 150px;
+    max-height: 200px;
 }

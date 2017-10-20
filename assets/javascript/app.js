@@ -148,7 +148,7 @@ function displayResults() {
 };
 
 // quiz timer
-setTimeout(timeUp, 1000 * 5);
+setTimeout(timeUp, 1000 * 120);
 
 function timeUp() {
 
