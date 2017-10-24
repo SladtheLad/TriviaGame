@@ -148,6 +148,7 @@ function displayResults() {
 };
 
 // quiz timer
+//*******************Add a div for displaying the timer */
 setTimeout(timeUp, 1000 * 120);
 
 function timeUp() {
